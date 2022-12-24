@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.11" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CallCenter.Entities\CallCenter.Entities.csproj" />
+    <ProjectReference Include="..\CallCenter.Models\CallCenter.Models.csproj" />
+    <ProjectReference Include="..\CallCenter.Utilities\CallCenter.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

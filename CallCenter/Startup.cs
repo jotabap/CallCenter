@@ -1,4 +1,9 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using CallCenter.Entities.Entities;
+using CallCenter.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+
 
 namespace CallCenter
 {
@@ -12,11 +17,29 @@ namespace CallCenter
         public IConfiguration Configuration { get; }
         public void ConfigureSevices(IServiceCollection services)
         {
-        //    services.AddDbContext<AplicationDbContext>(options =>
-        //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDBContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));            
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Version = "v1",
+                Title = "Call Center API",
+                Description = "Api desarrollada en .NET 6",
+                Contact = new OpenApiContact
+                {
+                    Name = "John Batista",
+                    Email = "johnk_batista@yahoo.com"
+                }
+
+            }));
+            services.AddScoped<ClientesService>();
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddMvc()
+               .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -39,4 +62,4 @@ namespace CallCenter
         }
     }
 }
-}
+

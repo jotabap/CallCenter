@@ -5,6 +5,18 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CallCenter", "CallCenter\CallCenter.csproj", "{70E66B95-DCEE-457A-ABFE-0B9E475E9461}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{AD84BA7F-88F4-419D-9811-7AD9DF758060}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallCenter.Utilities", "CallCenter.Utilities\CallCenter.Utilities.csproj", "{7764FB72-97DA-4156-A7D4-1B6432C4A60E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entity", "Entity", "{451C9C05-1105-4873-93C4-689E4947398F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallCenter.Entities", "CallCenter.Entities\CallCenter.Entities.csproj", "{05DB2CE6-7BCA-41F4-8CCD-AD3898AAFE76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{698CC90A-7148-4D26-9C13-EF8D7832507E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallCenter.Models", "CallCenter.Models\CallCenter.Models.csproj", "{D76AEFF6-9121-4C1F-82C0-25F7F6E6608B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +27,26 @@ Global
 		{70E66B95-DCEE-457A-ABFE-0B9E475E9461}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70E66B95-DCEE-457A-ABFE-0B9E475E9461}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70E66B95-DCEE-457A-ABFE-0B9E475E9461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7764FB72-97DA-4156-A7D4-1B6432C4A60E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7764FB72-97DA-4156-A7D4-1B6432C4A60E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7764FB72-97DA-4156-A7D4-1B6432C4A60E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7764FB72-97DA-4156-A7D4-1B6432C4A60E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05DB2CE6-7BCA-41F4-8CCD-AD3898AAFE76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DB2CE6-7BCA-41F4-8CCD-AD3898AAFE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DB2CE6-7BCA-41F4-8CCD-AD3898AAFE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DB2CE6-7BCA-41F4-8CCD-AD3898AAFE76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76AEFF6-9121-4C1F-82C0-25F7F6E6608B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76AEFF6-9121-4C1F-82C0-25F7F6E6608B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76AEFF6-9121-4C1F-82C0-25F7F6E6608B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76AEFF6-9121-4C1F-82C0-25F7F6E6608B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7764FB72-97DA-4156-A7D4-1B6432C4A60E} = {AD84BA7F-88F4-419D-9811-7AD9DF758060}
+		{05DB2CE6-7BCA-41F4-8CCD-AD3898AAFE76} = {451C9C05-1105-4873-93C4-689E4947398F}
+		{D76AEFF6-9121-4C1F-82C0-25F7F6E6608B} = {698CC90A-7148-4D26-9C13-EF8D7832507E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C46A2389-6ECF-4D11-8A61-E55616A2AEA6}
