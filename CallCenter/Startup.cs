@@ -9,6 +9,7 @@ namespace CallCenter
 {
     public class Startup
     {
+        readonly string CorsConfiguration = "_corsConfiguration";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,7 +22,7 @@ namespace CallCenter
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));            
             services.AddControllers();
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            
             services.AddSwaggerGen(c =>
             c.SwaggerDoc("v1", new OpenApiInfo
             {
@@ -35,6 +36,14 @@ namespace CallCenter
                 }
 
             }));
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: CorsConfiguration,
+                                       builder =>
+                                       {
+                                           builder.WithOrigins("http://localhost:4200");
+                                       });
+            });
             services.AddScoped<ClientesService>();
             services.AddAutoMapper(typeof(Startup));
 
@@ -51,7 +60,7 @@ namespace CallCenter
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.UseCors(CorsConfiguration);
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

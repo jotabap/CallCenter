@@ -9,18 +9,18 @@ namespace CallCenter.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-        public class ProductController : ControllerBase
+        public class ClientesController : ControllerBase
     {
         private readonly ClientesService _clienteServices;
 
-        public ProductController(ClientesService clienteServices)
+        public ClientesController(ClientesService clienteServices)
         {
             _clienteServices = clienteServices;
         }
 
         [HttpGet]
         [Route("GetByCedula/{cedula}/{page}/{cantity}")]
-        public async Task<ActionResult> GetByCedula([FromRoute] int cedula,int page, int cantity)
+        public async Task<ActionResult> GetByCedula([FromRoute] string cedula,int page, int cantity)
         {
             try
             {

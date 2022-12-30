@@ -3,6 +3,7 @@ using CallCenter.Models.ResponseModels;
 using CallCenter.Utilities.CommonDecoration;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 
 namespace CallCenter.Services
 {
@@ -16,13 +17,15 @@ namespace CallCenter.Services
             _context = context;
         }
 
-        public async Task<object> GetFilter(int cedula, int skip, int take)
+        public async Task<object> GetFilter(string cedula, int skip, int take)
         {
             var apiResponse = new GenericResponse();
             try
             {
+                int number= Int32.Parse(cedula.Trim());
+                
                 var ConsultaSP  = await _context.SPClienteBM.
-                    FromSqlRaw("SP_CONSULTA_CLIENTE @cedula", new SqlParameter("@cedula",cedula)).ToListAsync();
+                    FromSqlRaw("SP_CONSULTA_CLIENTE @CEDULA", new SqlParameter("@CEDULA", number)).ToListAsync();
 
                 if (!ConsultaSP.Any())
                 {
