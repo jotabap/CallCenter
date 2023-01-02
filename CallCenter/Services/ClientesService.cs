@@ -1,6 +1,9 @@
 ﻿using CallCenter.Entities.Entities;
+using CallCenter.Models.BM;
 using CallCenter.Models.ResponseModels;
 using CallCenter.Utilities.CommonDecoration;
+using CallCenter.Utilities.Repositories;
+using CallCenter.Utilities.StoreProcedures;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
@@ -9,12 +12,13 @@ namespace CallCenter.Services
 {
     [Service]
     public class ClientesService
-    {
-        private readonly ApplicationDBContext _context;
+    {       
+        private readonly IRepository<SPClienteBM> _repository;
 
-        public ClientesService(ApplicationDBContext context)
+        public ClientesService(ApplicationDBContext context, IRepository<SPClienteBM> repository)
         {
-            _context = context;
+            
+            _repository = repository;
         }
 
         public async Task<object> GetFilter(string cedula, int skip, int take)
@@ -23,9 +27,9 @@ namespace CallCenter.Services
             try
             {
                 int number= Int32.Parse(cedula.Trim());
-                
-                var ConsultaSP  = await _context.SPClienteBM.
-                    FromSqlRaw("SP_CONSULTA_CLIENTE @CEDULA", new SqlParameter("@CEDULA", number)).ToListAsync();
+                              
+                var ConsultaSP = _repository.GetSP(ProcedimientosAlmacenados.ProcedimientoCientes, number);
+
 
                 if (!ConsultaSP.Any())
                 {
@@ -35,9 +39,9 @@ namespace CallCenter.Services
                 }
 
                 var count = ConsultaSP?.Skip((skip - 1) * take)?.Take(take).Count();
-                var total = ConsultaSP.Count;
+               // var total = ConsultaSP?.Count;
                 apiResponse.ObjectResponse = ConsultaSP?.Skip((skip - 1) * take)?.Take(take);
-                apiResponse.TotalRecords = total;
+                //apiResponse.TotalRecords = total;
                 apiResponse.CountRecords = (long)count;
                 apiResponse.OperationSucces = true;
             }

@@ -1,9 +1,10 @@
-﻿using CallCenter.Utilities.BaseEntity;
+﻿
 using System;
 using System.Collections.Generic;
 
-namespace CallCenter;
+namespace CallCenter.Entities.Entities
 
+{ 
 public partial class Cliente:BaseEntity
 {
     public string NombreCompleto { get; set; } = null!;
@@ -13,4 +14,6 @@ public partial class Cliente:BaseEntity
     public int Pin { get; set; }
 
     public virtual ICollection<TablaPago> TablaPagos { get; } = new List<TablaPago>();
+}
+
 }

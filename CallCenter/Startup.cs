@@ -1,5 +1,6 @@
 ﻿using CallCenter.Entities.Entities;
 using CallCenter.Services;
+using CallCenter.Utilities.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -45,6 +46,7 @@ namespace CallCenter
                                        });
             });
             services.AddScoped<ClientesService>();
+            services.AddScoped(typeof(IRepository<>),typeof(CallRepository<>));
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()

@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CallCenter.Models\CallCenter.Models.csproj" />
-    <ProjectReference Include="..\CallCenter.Utilities\CallCenter.Utilities.csproj" />
   </ItemGroup>
 
 </Project>
